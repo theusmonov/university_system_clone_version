@@ -1,0 +1,8 @@
+# Proyekt rejasi.
+
+
+#Bu proyekt men o'qiydigan universitetning backend qismi clone versiyasi hisoblanadi.
+#Bu proyektda talabalar o'z dars jadvallarini ko'ra olishlari, tizimga yuklangan vazifalar,o'qituvchilar ism familyasi, fan uchun yuklangan mavzularni, hamda vazifalarni ko'ra olishlari lozim.
+#Talaba o'zini nechinchi kursda o'qiy olishini bilishi kerak o'zi haqida to'liq malumot ko'rinib turishi lozim buladi, kerakli bo'limda.
+#Kerakli shartnomalarni tizimdan yuklay olishi kerak.
+#O'z bajargan vazifalarini tizimga yuklay olishi kerak.
