@@ -15,6 +15,7 @@ try {
     console.error("Database bazasiga ulanib bo'lmadi:", error);
   }
 
+
 app.listen(port, () => {
     console.log(`Server http://${host}:${port} da ishga tushdi`);
 })
