@@ -1,34 +1,73 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
+import { sequelize } from "../db/index.js";
 
-class AdminCreateStudentmodel extends Model {}
+class AdminCreateStudentModel extends Model {}
 
-AdminCreateStudentmodel.init(
+AdminCreateStudentModel.init(
   {
-    guruh_raqami: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    talaba_ismi: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    talaba_familiyasi: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    talaba_qabul_yili: {
+    "F.I.SH": {
       type: DataTypes.STRING,
       allowNull: false
     },
-    talim_darajasi: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: 'bakalavr',
+    "Tug'ilgan_sanasi": {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    talim_shakli: {
-        type: DataTypes.STRING,
-        allowNull: false
+    Jinsi: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Manzil: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    "Manzil(vaqtincha)": {
+      type: DataTypes.STRING,
+      allowNull:false
+    },
+    "Yo'nalish": {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    "O'qish_tili": {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Darajasi: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    "Ta'lim_shakli" : {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Kurs: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Guruh: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Tyutor: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Stipendiya: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Qabul_turi: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
-  {}
+  {
+    sequelize,
+    timestamps: true,
+    paranoid: true,
+    tableName: "Talaba_Ma'lumotlari"
+  }
 );
+
+await sequelize.sync({alter: true})

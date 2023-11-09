@@ -17,5 +17,5 @@ try {
 
 
 app.listen(port, () => {
-    console.log(`Server http://${host}:${port} da ishga tushdi`);
+    console.log(`Server http://${host}:${port} portda ishga tushdi`);
 })
