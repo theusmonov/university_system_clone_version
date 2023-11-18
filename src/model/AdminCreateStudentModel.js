@@ -5,6 +5,10 @@ export class AdminCreateStudentModel extends Model {}
 
 AdminCreateStudentModel.init(
   {
+    TalabaRasmi: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     FISh: {
       type: DataTypes.STRING,
       allowNull: false,

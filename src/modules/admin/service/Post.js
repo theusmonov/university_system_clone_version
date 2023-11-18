@@ -2,6 +2,7 @@ import { AdminCreateStudentModel } from "../../../model/AdminCreateStudentModel.
 
 const createStudent = async ({ body }) => {
   const {
+    TalabaRasmi,
     FISh,
     TugilganSanasi,
     Jinsi,
@@ -19,6 +20,7 @@ const createStudent = async ({ body }) => {
   } = body;
 
   if (
+    !TalabaRasmi||
     !FISh ||
     !TugilganSanasi ||
     !Jinsi ||
