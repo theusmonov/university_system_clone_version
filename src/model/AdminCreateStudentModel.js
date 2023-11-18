@@ -1,73 +1,74 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import { sequelize } from "../db/index.js";
 
-class AdminCreateStudentModel extends Model {}
+export class AdminCreateStudentModel extends Model {}
 
 AdminCreateStudentModel.init(
   {
-    "F.I.SH": {
+    FISh: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    "Tug'ilgan_sanasi": {
+    TugilganSanasi: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     Jinsi: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     Manzil: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    "Manzil(vaqtincha)": {
+    ManzilVaqtincha: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false,
     },
-    "Yo'nalish": {
+    Yonalish: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    "O'qish_tili": {
+    OqishTili: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     Darajasi: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    "Ta'lim_shakli" : {
+    TalimShakli: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     Kurs: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     Guruh: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     Tyutor: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     Stipendiya: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     Qabul_turi: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
-    sequelize,
+    sequelize: sequelize,
     timestamps: true,
     paranoid: true,
-    tableName: "Talaba_Ma'lumotlari"
+    tableName: "talaba_malumoti",
   }
 );
 
-await sequelize.sync({alter: true})
+
+await sequelize.sync({alter: true})  
