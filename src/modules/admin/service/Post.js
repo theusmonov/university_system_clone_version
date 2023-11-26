@@ -1,49 +1,45 @@
 import { AdminCreateStudentModel } from "../../../model/AdminCreateStudentModel.js";
+import isInvalidData from "../../../utils/isInvalidData.js";
 
-const createStudent = async ({ body }) => {
-  const {
-    TalabaRasmi,
-    FISh,
-    TugilganSanasi,
-    Jinsi,
-    Manzil,
-    ManzilVaqtincha,
-    Yonalish,
-    OqishTili,
-    Darajasi,
-    TalimShakli,
-    Kurs,
-    Guruh,
-    Tyutor,
-    Stipendiya,
-    Qabul_turi: qabulTuri,
-  } = body;
+const createStudent = async ( body ) => {
+  const bodyKeyData = [
+    "TalabaRasmi",
+    "FISh",
+    "TugilganSanasi",
+    "Jinsi",
+    "Manzil",
+    "ManzilVaqtincha",
+    "Yonalish",
+    "OqishTili",
+    "Darajasi",
+    "TalimShakli",
+    "Kurs",
+    "Guruh",
+    "Tyutor",
+    "Stipendiya",
+    "Qabul_turi",
+  ];
 
-  if (
-    !TalabaRasmi||
-    !FISh ||
-    !TugilganSanasi ||
-    !Jinsi ||
-    !Manzil ||
-    !ManzilVaqtincha ||
-    !Yonalish ||
-    !OqishTili ||
-    !Darajasi ||
-    !TalimShakli ||
-    !Kurs ||
-    !Guruh ||
-    !Tyutor ||
-    !Stipendiya ||
-    !qabulTuri
-  ) {
-    return;
+  const newKeyObject = {};
+  for (const data of bodyKeyData) {
+     newKeyObject[data] = body[data];
   }
 
-  const createdStudentData = await AdminCreateStudentModel.create({
-   ...body
-  });
+  if (isInvalidData(body)) {
+    return; 
+  }
+
+  const createdStudentData = await AdminCreateStudentModel.create(newKeyObject);
 
   return createdStudentData;
+
+
+ 
+  
+
+
+
+  
 };
 
 export default createStudent;
