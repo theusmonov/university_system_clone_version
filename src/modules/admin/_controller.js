@@ -1,10 +1,13 @@
 import isInvalidData from "../../utils/isInvalidData.js";
-import CreateStudent from "./service/Post.js";
+import GetStudentData from "./service/Get.js";
+import CreateStudent from "./service/Post.js"; 
 
 
 const CREATEDSTUDENT = async (req, res) => {
    try {
-      const newStudent = await CreateStudent(req.body)
+      const {filename} = req.file
+      const studentData = req.body
+      const newStudent = await CreateStudent(studentData, filename)
       if(isInvalidData(req.body)){
          return res.status(400).json({
             message: "Malumotlar to'liq kiritilmagan",
@@ -15,8 +18,23 @@ const CREATEDSTUDENT = async (req, res) => {
          message: "Talaba ma'lumotlari yaratildi"
       })
    } catch (err) {
-     return res.status(500).json({err: err.message})
+     return res.status(500).json({err: err.message + "Create student data"})
    }
 }
+
+
+
+const GETSTUDENTDATA = async (req, res) => {
+   try {
+      const dataStudent = await GetStudentData();
+      return res.status(200).json({
+         data: dataStudent,
+         message: "Talaba ma'lumotlari ko'rsatildi"
+      })
+   } catch (err) {
+      return res.status(500).json({err: err.message + "Get student data"})
+   }
+}
+
       
-export {CREATEDSTUDENT};
+export {CREATEDSTUDENT, GETSTUDENTDATA};
