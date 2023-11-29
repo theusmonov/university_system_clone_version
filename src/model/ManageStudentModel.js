@@ -1,10 +1,16 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import { sequelize } from "../db/index.js";
 
-export class AdminCreateStudentModel extends Model {}
+export class ManageStudentModel extends Model {}
 
-AdminCreateStudentModel.init(
+ManageStudentModel.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey : true
+    },
     TalabaRasmi: {
       type: DataTypes.STRING,
       allowNull: false

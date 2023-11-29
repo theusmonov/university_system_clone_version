@@ -1,4 +1,4 @@
-import { AdminCreateStudentModel } from "../../../model/AdminCreateStudentModel.js";
+import { ManageStudentModel } from "../../../model/ManageStudentModel.js";
 import isInvalidData from "../../../utils/isInvalidData.js";
 
 const createStudent = async (body, filename) => {
@@ -30,13 +30,13 @@ const createStudent = async (body, filename) => {
       return;
     }
 
-    const createdStudentData = await AdminCreateStudentModel.create(
+    const createdStudentData = await ManageStudentModel.create(
       newKeyObject
     );
 
     return createdStudentData;
   } catch (err) {
-    console.error("Xatolik talaba ma'lumotlarini yaratishda", err);
+    console.error("Xatolik talaba ma'lumotlarini yaratish service qismida", err);
   }
 };
 
