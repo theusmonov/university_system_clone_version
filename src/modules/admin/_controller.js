@@ -1,92 +1,120 @@
 import isInvalidData from "../../utils/isInvalidData.js";
-import GetStudentData from "./service/Get.js";
-import getById from "./service/GetbyId.js";
-import CreateStudent from "./service/Post.js";
+import createStudent from "./service/Create.js";
+import getStudentData from "./service/Read.js";
+import getById from "./service/ReadById.js";
 import updateStudent from "./service/Update.js";
+import deleteStudent from "./service/Remove.js"
 
-const CREATEDSTUDENT = async (req, res) => {
-  try {
-    const { filename } = req.file;
-    const studentData = req.body;
-    const newStudent = await CreateStudent(studentData, filename);
-    if (isInvalidData(req.body)) {
-      return res.status(400).json({
-        message: "Malumotlar to'liq kiritilmagan",
+class ManageStudentController {
+
+  CREATEDSTUDENT = async (req, res) => {
+    try {
+      const { filename } = req.file || {};
+      const studentData = req.body;
+      const newStudent = await createStudent(studentData, filename);
+      if (isInvalidData(req.body || req.file)) {
+        return res.status(400).json({
+          message: "Malumotlar to'liq kiritilmagan",
+        });
+      }
+      return res.status(201).json({
+        data: newStudent,
+        message: "Talaba ma'lumotlari yaratildi",
       });
+    } catch (err) {
+      return res.status(500).json({ err: err.message });
     }
-    return res.status(201).json({
-      data: newStudent,
-      message: "Talaba ma'lumotlari yaratildi",
-    });
-  } catch (err) {
-    return res
-      .status(500)
-      .json({
-        err:
-          err.message + "Talaba ma'lumotlarini yaratishda xatolik controller",
-      });
-  }
-};
+  };
 
-const GETSTUDENTDATA = async (req, res) => {
-  try {
-    const dataStudent = await GetStudentData();
-    return res.status(200).json({
-      data: dataStudent,
-      message: "Talaba ma'lumotlari ko'rsatildi",
-    });
-  } catch (err) {
-    return res
-      .status(500)
-      .json({
-        err: err.message + "Talaba ma'lumotlarini olishda xatolik controller",
-      });
-  }
-};
 
-const UPDATESTUDENTDATA = async (req, res) => {
-  try {
-    const studentID = req.params.id;
-    const updatedData = req.body;
-    const newResult = await updateStudent(studentID, updatedData);
-    if (isInvalidData(req.body)) {
-      return res.status(400).json({
-        message: "Updated qilish uchun malumotlar to'liq kiritilmagan",
+
+  GETSTUDENT = async (req, res) => {
+    try {
+      const data = await getStudentData();
+      return res.status(200).json({
+        data,
+        message: "Umumiy talabalar",
       });
+    } catch (err) {
+      return res.status(500).json({ err: err.message });
     }
-    if(!newResult){
-      return res.status(404).json({
-         message: "Talaba topilmadi"
-      })
-    }
-    return res.status(200).json({
-      data: newResult,
-      message: "Ma'lumot yangilandi",
-    });
-  } catch (err) {
-    console.error(
-      "Talaba ma'lumotlarini yangilashdagi xatolik controller", err
-    );
-  }
-};
+  };
 
 
-const GETSTUDENTBYPARAMSID = async (req, res) => {
-   try {
+
+  GETSTUDENTBYPARAMSID = async (req, res) => {
+    try {
       const idStudent = req.params.id;
       const findStudent = await getById(idStudent);
-      if(!findStudent){
-         return res.status(404).json({
-            message: "Id bo'yicha talaba topilmadi"
-         })
+      if (!findStudent) {
+        return res.status(404).json({
+          message: "Id bo'yicha talaba topilmadi",
+        });
       }
       return res.status(200).json({
-         data: findStudent,
-         message: "Id bo'yicha talaba ma'lumotlari topildi"
-      })
-   } catch (err) {
-      console.error("Talabani id bo'yicha qidirishda controllerda xatolik", err)
-   }
+        data: findStudent,
+        message: "Id bo'yicha talaba ma'lumotlari topildi",
+      });
+    } catch (err) {
+      return res.status(500).json({err: err.message})
+    }
+  }; 
+
+
+
+  UPDATESTUDENTDATA = async (req, res) => {
+    try {
+      const studentID = req.params.id;
+      const updatedData = req.body;
+      const newResult = await updateStudent(studentID, updatedData);
+      if (isInvalidData(req.body)) {
+        return res.status(400).json({
+          message: "Updated qilish uchun malumotlar to'liq kiritilmagan",
+        });
+      }
+      if (!newResult) {
+        return res.status(404).json({
+          message: "Talaba topilmadi",
+        });
+      }
+      return res.status(200).json({
+        data: newResult,
+        message: "Ma'lumot yangilandi",
+      });
+    } catch (err) {
+      return res.status(500).json({ err: err.message });
+    }
+  };
+
+
+
+  DELETESTUDENT = async (req, res) => {
+    try {
+      const studenId = req.params.id;
+      const delStudentData = await deleteStudent(studenId);
+      if (!delStudentData) {
+        return res.status(404).json({
+          message: "Bu id dagi talaba ma'lumotlari topilmadi",
+        });
+      } else {
+        return res.status(200).json({
+          message: "Talaba ma'lumot o'chirildi",
+        });
+      }
+      
+    } catch (err) {
+      return res.status(500).json({err: err.message})
+    }
+  };
 }
 
-export { CREATEDSTUDENT, GETSTUDENTDATA, UPDATESTUDENTDATA, GETSTUDENTBYPARAMSID};
+
+
+
+
+
+
+
+
+
+export default new ManageStudentController();

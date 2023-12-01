@@ -7,7 +7,7 @@ import ManageStudentRouter from "./routers/ManageStudentRouter.js";
 
 const app = express();
 
-let port = process.env.APP_PORT || 7000
+let port = process.env.APP_PORT || 9000
 let host = process.env.APP_HOST
 
 app.use(express.json())
