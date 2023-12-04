@@ -18,7 +18,7 @@ const updateStudent = async (studentID, body) => {
     if(!existStudent){
         return;
     }
-    await existStudent.update(updatedStudentData);
+    (await existStudent.update(updatedStudentData)).save()
     return existStudent;
   } 
 

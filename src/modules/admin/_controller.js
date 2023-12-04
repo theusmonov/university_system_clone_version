@@ -109,12 +109,4 @@ class ManageStudentController {
 }
 
 
-
-
-
-
-
-
-
-
 export default new ManageStudentController();

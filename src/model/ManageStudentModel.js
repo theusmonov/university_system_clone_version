@@ -1,7 +1,7 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import { sequelize } from "../db/index.js";
 
-export class ManageStudentModel extends Model {}
+export class ManageStudentModel extends Model{}
 
 ManageStudentModel.init(
   {

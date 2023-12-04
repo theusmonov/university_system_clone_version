@@ -2,7 +2,10 @@ import express from "express"
 import "dotenv/config"
 import { sequelize } from "./db/index.js";
 import path from "path";
-import ManageStudentRouter from "./routers/ManageStudentRouter.js";
+import ManageStudentRoute from "./routes/ManageStudentRoutes.js";
+import AddUsersRoute from "./routes/AddUsersModel.js";
+
+
 
 
 const app = express();
@@ -11,7 +14,8 @@ let port = process.env.APP_PORT || 9000
 let host = process.env.APP_HOST
 
 app.use(express.json())
-app.use(ManageStudentRouter)
+app.use(ManageStudentRoute)
+app.use(AddUsersRoute)
 
 
 
