@@ -1,10 +1,11 @@
 import { Router } from "express";
-import AdminController from "../auth/_authAdminController.js"
+import AddUsersController from "../auth/_authAddUsersController.js"
 
 const AddUsersRoute = Router()
 
-AddUsersRoute.post("/api/admin-register", AdminController.REGISTER)
-AddUsersRoute.post("/api/admin-login", AdminController.LOGIN)
+AddUsersRoute.post("/api/user-register", AddUsersController.USER_REGISTER)
+AddUsersRoute.post("/api/user-login", AddUsersController.USER_LOGIN)
+AddUsersRoute.post("/api/admin-register", AddUsersController.ADMIN_REGISTER)
 
 
 export default AddUsersRoute;
