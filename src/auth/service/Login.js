@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import { AddUsersModel } from "../../model/AddUsersModel.js";
 
 
-const login = async (bodyData) => {
+const loginUser = async (bodyData) => {
   const { Login, Parol } = bodyData;
 
   const admin = await AddUsersModel.findOne({
@@ -20,4 +20,4 @@ const login = async (bodyData) => {
   return admin; 
 };
 
-export default login;
+export default loginUser;

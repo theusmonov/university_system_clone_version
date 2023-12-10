@@ -12,7 +12,7 @@ class AddUsersController {
     try {
         const adminData = req.body
         const userRegister = await registerUser(adminData);
-        return res.status(200).json({data: userRegister, message: "Register buldi"})
+        return res.status(200).json({data: userRegister, message: `Tabriklaymiz ro'yxatdan o'tdingiz ${adminData.Ism}`})
     } catch (err) {
       return res.status(500).json({ err: err.message });
     }
@@ -34,7 +34,7 @@ class AddUsersController {
     try {
         const adminData = req.body
         const adminRegister = await registerAdmin(adminData);
-        return res.status(200).json({data: adminRegister, message: "Register buldi"})
+        return res.status(200).json({data: adminRegister, message: `Tabriklaymiz ro'yxatdan o'tdingiz ${adminData.Ism}`})
     } catch (err) {
       return res.status(500).json({ err: err.message });
     }
