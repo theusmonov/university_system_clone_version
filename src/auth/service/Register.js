@@ -22,7 +22,7 @@ const registerUser = async (bodyData) => {
 const registerAdmin = async (bodyData) => {
   const newObjectDataAdmin = {};
   const hashPassword = await bcrypt.hash(bodyData.Parol, 10);
-  bodyDataAdmin.forEach((e) => {
+  bodyDataUser.forEach((e) => {
     if (e === "Parol") {
       newObjectDataAdmin[e] = hashPassword;
     } else {

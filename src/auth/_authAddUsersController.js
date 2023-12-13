@@ -21,10 +21,10 @@ class AddUsersController {
 
   USER_LOGIN = async (req, res) => {
     try {
-      const  adminData = req.body
-      const adminLogin = await login(adminData)
+      const  userData = req.body
+      const userLogin = await login(userData)
       if (adminLogin) {
-        return res.status(200).json({ message: "Login muvaffaqiyatli amalga oshdi", token: adminLogin.token });
+        return res.status(200).json({ message: "Login muvaffaqiyatli amalga oshdi", token: userLogin.token });
       } else {
         return res.status(401).json({ message: "Login yoki parol xato" });
       }
@@ -41,6 +41,22 @@ class AddUsersController {
         return res.status(200).json({data: adminRegister, message: `Tabriklaymiz ro'yxatdan o'tdingiz ${adminData.Ism}`})
     } catch (err) {
       return res.status(500).json({ err: err.message });
+    }
+  };
+
+
+
+  ADMIN_LOGIN = async (req, res) => {
+    try {
+      const  adminData = req.body
+      const adminLogin = await login(adminData)
+      if (adminLogin) {
+        return res.status(200).json({ message: "Login muvaffaqiyatli amalga oshdi", token: adminLogin.token });
+      } else {
+        return res.status(401).json({ message: "Login yoki parol xato" });
+      }
+    } catch (err) {
+      return res.status(500).json({err: err.message})
     }
   };
 };

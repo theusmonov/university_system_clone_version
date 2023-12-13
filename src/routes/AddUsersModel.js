@@ -7,6 +7,7 @@ const AddUsersRoute = Router()
 AddUsersRoute.post("/api/user-register", AddUsersController.USER_REGISTER)
 AddUsersRoute.post("/api/user-login", verifyLoginToken, AddUsersController.USER_LOGIN)
 AddUsersRoute.post("/api/admin-register", AddUsersController.ADMIN_REGISTER)
+AddUsersRoute.post("/api/admin-login", AddUsersController.ADMIN_LOGIN)
 
 
 export default AddUsersRoute;
