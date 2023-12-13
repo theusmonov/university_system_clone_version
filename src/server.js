@@ -5,6 +5,7 @@ import path from "path";
 import bodyParser from "body-parser";
 import ManageStudentRoute from "./routes/ManageStudentRoutes.js";
 import AddUsersRoute from "./routes/AddUsersModel.js";
+import fs from "fs"
 
 
 
@@ -18,9 +19,15 @@ app.use(bodyParser.urlencoded({extended :true}))
 app.set("views", path.join(process.cwd(), "src", "views"));
 app.set("view engine", "ejs")
 
+app.use(express.static(path.join(process.cwd(), "public")))
+app.use(express.static(path.join(process.cwd(), "upload")));
+
 
 app.use(ManageStudentRoute)
 app.use(AddUsersRoute)
+
+
+
 
 
 app.get("/api/user-login", (req, res) => {
@@ -37,7 +44,9 @@ app.use("*/", (req, res) => {
   })
 })
 
-app.use(express.static(path.join(process.cwd(), "upload")));
+
+
+
 
 try {
     await sequelize.authenticate();

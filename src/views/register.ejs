@@ -4,16 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Register Page</title>
+  <link rel="stylesheet" href="/register.css" type="text/css">
 </head>
 <body>
     <h1>Register</h1>
     <form action="/api/user-register" method="post">
-      <label for="regUsername">Username:</label>
-      <input type="text" id="regUsername" name="regUsername" required>
+      <label for="regUsername">Familiya:</label>
+      <input type="text" id="regUsername" name="Familiya" required>
       <br>
-      <label for="regPassword">Password:</label>
-      <input type="password" id="regPassword" name="regPassword" required>
+      <label for="regName">Ism:</label>
+      <input type="text" id="regPassword" name="Ism" required>
+      <br>
+      <label for="regLogin">Login:</label>
+      <input type="text" id="regPassword" name="Login" required>
+      <br>
+      <label for="regPaarol">Parol:</label>
+      <input type="password" id="regPassword" name="Parol" required>
       <br>
       <button type="submit">Register</button>
     </form>

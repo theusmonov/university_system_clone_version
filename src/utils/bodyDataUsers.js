@@ -1,8 +1,8 @@
-const bodyDataAdmin = [
+const bodyDataUser = [
     "Familiya",
     "Ism",
     "Login",
     "Parol"
 ]
 
-export default bodyDataAdmin;
+export default bodyDataUser;
